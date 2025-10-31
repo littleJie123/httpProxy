@@ -5,6 +5,14 @@ const net = require('net');
 const PORT = process.env.PORT || 8080;
 // 创建 HTTP 代理服务器
 const server = http.createServer((req, res) => {
+  
+  if(req.url.endsWith('chaifengAskHttpProxy')){
+    console.log('ok');
+    res.write('httpProxy is ok ')
+    res.end();
+    return;
+  }
+
   console.log(`HTTP request: ${req.method} ${req.url}`);
   // 解析请求 URL
   const { hostname, port, path } = url.parse(req.url);
